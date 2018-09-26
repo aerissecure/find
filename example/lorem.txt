@@ -1,0 +1,10 @@
+123456789matchmex世界
+123456789matchmex
+12345世界6789matchmex
+123456789matchmex世界
+we don't necessari世界ly need to know the total bytes into the file that have been read.
+we just need to know the starting point (in terms of total bytes into the file) and the relative match location.
+but we matchme also need to世界 the ability to reset the reader back more bytes than
+we don't necessarily need to know the total bytes into the file that have been read.
+we just need to know the starting point (in terms of total byte世界s into the file) and the relative match location.
+but we also need to the ability to reset the reader back more bytes than
