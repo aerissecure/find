@@ -23,7 +23,6 @@ func Find(rdr io.Reader, re *regexp.Regexp, n int) []Match {
 	matches := make([]Match, 0, n)
 	for n == 0 || len(matches) < n {
 		sbyte := r.Cursor()
-		fmt.Println(re.String(), sbyte)
 		matchIdx := re.FindReaderIndex(r)
 		if matchIdx == nil {
 			break
@@ -33,16 +32,12 @@ func Find(rdr io.Reader, re *regexp.Regexp, n int) []Match {
 		bytesNeed := matchIdx[1]
 		extra := bytesRead - int64(bytesNeed)
 
-		fmt.Println(re.String(), "ebyte:", r.Cursor())
-		fmt.Println("extra:", extra)
 		r.Unread(extra)
-		fmt.Println(re.String(), "ebyte:", r.Cursor())
 
 		l := matchIdx[1] - matchIdx[0]
 		txt := string(r.LastBytes(l))
 
 		matches = append(matches, Match{Text: txt, Byte: ebyte - extra - int64(l)})
-		fmt.Println("match:", txt, "s:", sbyte, "e:", ebyte)
 	}
 	return matches
 }
@@ -147,6 +142,5 @@ func (g *Group) Find(r io.Reader) (map[int][]Match, error) {
 
 	// wait for go routines to return (e.g. add matches)
 	wg.Wait()
-	fmt.Println("done")
 	return g.matches, nil
 }
